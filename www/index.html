@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>
+
+        </title>
+        <link href='https://fonts.googleapis.com/css?family=PT Sans' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/login.css" rel="stylesheet">        
+        <script  type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript">
+		$(document).ready(function() {
+		 $(document).on('click', '#submitlogin', function() 
+    	 { 
+			window.location = "pages.html";
+            
+     	 });	
+		});
+		</script>        
+    </head>
+    <body>
+        <img src="images/bmc.jpg" class="backimg">
+        <div class="screen">
+        </div>
+        <div id="maindiv">
+                <h2 style="color: #ff6100">MILK COMPANY</h2>
+                <h1>Welcome</h1>
+                <h4>Bulk Milk Cooling System</h4>
+                <div id="user">
+                    <span class="fa fa-user"></span>
+                    <input type="text" placeholder="Username" id="username">
+                </div>                  
+                <div id="pass">
+                    <span class="fa fa-key"></span>
+                    <input type="password" placeholder="Password" id="password">
+                </div>                  
+                <button id="submitlogin">Login</button>
+                <p class="copy">Copyrights</p>
+        </div>
+        <img src="images/caw.png" style="width: 100%;top: 74%;position: absolute;left: 0%;"/> 
+    </body>
+</html>

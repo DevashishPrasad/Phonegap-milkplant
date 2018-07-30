@@ -1,0 +1,155 @@
+body{
+    margin: 0;
+    text-align: center;
+    font-family: Open Sans; 
+}
+#home
+{
+    background: url("images/bmc.jpg");
+}
+#mag
+{
+    background: url("images/bmc.jpg");
+}
+#activity
+{
+    background: url("images/bmc.jpg");
+}
+#calendar
+{
+    background: url("images/bmc.jpg");
+}
+.screen{
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    opacity: 0.8;
+}
+.backimg
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left:0;
+    /* filter: blur(1px); */
+}
+.tank
+{
+    position: absolute;
+    z-index: 1;
+    margin-left: 5%;
+    width: 90%;
+    top: 13%;
+    height: 35%;
+}
+.whiteback
+{
+    position: absolute;
+    z-index: 1;
+    margin-left: 5%;
+    width: 90%;
+    top: 49%;
+    height: 45%;
+}
+.head
+{
+  background-color: #001e4f;
+  padding-bottom: 5px;
+  position: fixed;
+  padding-top: 5px;
+  width: 100%;
+  padding-top:10px;
+  top: 0px;
+  z-index: 5;
+}
+.boxes
+{
+    margin-top: 4%; 
+    margin-left: 4%;
+    float: left;
+    width: 45%;
+    height: 43%;
+}
+.imgbox
+{
+    height: 100%;
+    width: 100%;
+}
+.textonbox
+{
+    position: absolute;
+    z-index: 3;
+}
+.menu
+{
+  background-color: #001e4f;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  z-index: 5;
+  text-align: center;
+  margin: auto;
+}
+.menu ul
+{
+  width: 100%;
+  margin-top:0px;
+  padding: 0%; 
+}
+.menu li
+{
+  padding: 2%;
+  float: left;
+  width: 25%;
+  text-align: center;
+  display: inline;
+  list-style-type: none;
+}
+.menu i
+{
+  font-size: 24px;
+}
+
+#tbl
+{
+    border-collapse: collapse;
+    position:absolute;
+    color:#000; 
+    margin-top:15%;
+    margin-left:5%;
+    width:90%;
+    background:white;
+}
+.tblhead
+{
+    font-weight:bold;
+    padding: 18px;
+    background: #001e4f;
+    color: #fff;
+}
+#tbl td
+{
+    padding:9px;
+}
+.spltd
+{
+    text-transform: uppercase;
+    text-align: center;
+}
+#OpenAlarmsTab
+{
+    border-collapse: collapse;
+    position:absolute;
+    color:#000; 
+    margin-left:1%;
+    width:100%;
+    background:white;   
+}
+
+#OpenAlarmsTab td
+{
+    padding:9px;
+    font-size: 14px; 
+}

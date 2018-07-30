@@ -1,0 +1,174 @@
+<html>
+    <head>
+        <title>
+			MAPP - Tank Controller
+        </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="css/JQFont.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" />
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:300" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/w3.css" />
+		<link rel="stylesheet" href="css/w3-theme-blue.css" />        
+        
+        <link href="css/pages.css" rel="stylesheet">
+                        
+        <script defer src="js/fa-v4-shims.js"></script>
+        <script src="scripts/jquery-1.11.1.min.js"></script>
+        <script src="scripts/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+        <script type="text/javascript">
+			// Load google charts
+			google.charts.load('current', {'packages':['corechart']});
+			
+		</script>        
+        
+        <script src="js/pages.js"></script>
+        
+       
+    </head>
+    <body>
+    
+        <div data-role="page" id="home">      
+            <img src="images/bmc.jpg" class="backimg">
+            
+            <div class="screen"></div>
+            <div class="head" style="text-align:left;padding-top:6px;">
+            <span style="color:#fff;font-size:24px;margin-left:20px;">Home</span>
+            <a href="#" onclick="exitApp();" style="color:#fff">
+            <i class="fa fa-power-off" style="position:absolute;color:#fff;font-size:24px;right:20px;padding-top:6px;" aria-hidden="true"></i>
+            </a></div>
+            
+            <p style="position:absolute;color:#000;margin-left:5%;margin-top:16%;font-size: 14px;" class="LastUpd"></p>
+            
+            <div class="tank">
+                <img style="height: 93%;width:98%;margin-top: 6%;" src="images/tank1.png"/>
+                <p style="position: absolute;top: 33%;;font-size: 23px;left:9%">Milk: <span id="TANK_QTY">000000 ltr.</span> 
+	          	</p>
+                <img style="position: absolute;height: 42%;width: 12%;top:28%;left:60%;" src="images/temp.png" />
+                <p style="position: absolute;top: 33%;;font-size: 16px;left:70%"><span  id="TANK_TEMP">0.0  </span><sup>o </sup>C.</p>
+            </div>
+            
+            <div class="whiteback">
+                <div class="boxes" style="text-align: center;"><img class="imgbox" src="images/agitator.png" /> 
+                <p class="textonbox" style="top:20%;left: 15%;font-size: 18px;">Agitator<br><span id="AgitHrs">0:0:0</span></p></div>
+                <div class="boxes"><img class="imgbox" src="images/comp.png" />
+                <p class="textonbox" style="top:20%;left: 60%;font-size: 18px;">Compressor<br> <span id="CompHrs">0:0:0</span></p></div>
+                <div class="boxes"><img class="imgbox" src="images/genset.png" />
+                <p class="textonbox" style="top:66%;left: 15%;font-size: 18px;">Genset<br> <span  id="GenSetHrs">0:0:0</span></p></div>
+                <div class="boxes"><img class="imgbox" src="images/main.png" />
+                <p class="textonbox" style="top:66%;left: 63%;font-size: 18px;">Grid<br> <span   id="GridHrs">0:0:0</span></p></div>
+            </div>
+            <div class="menu">
+                <ul>
+                    <a href="#" style="color:#fff"><li style="background:#3961a3"><i class="fa fa-home"></i></li></a>
+                    <a href="#mag" style="color:#999"><li><i class="fa fa-th"></i></li></a>
+                    <a href="#activity" style="color:#999"><li><i class="fa fa-bar-chart"></i></li></a>
+                    <a href="#bell" style="color:#999"><li><i class="fa fa fa-bell-o"></i></li></a>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div data-role="page" id="mag">
+            <div class="head" style="text-align:left;padding-top:6px;">
+            <span style="color:#fff;font-size:24px;margin-left:20px;">Plant Status</span>
+            <a href="#" onclick="exitApp();" style="color:#fff">
+            <i class="fa fa-power-off" style="position:absolute;color:#fff;font-size:24px;right:20px;padding-top:6px;" aria-hidden="true"></i>
+            </a></div>
+
+            <img src="images/bmc.jpg" class="backimg">
+            <div class="screen"></div>
+            <p style="position:absolute;color:#000;margin-left:5%;margin-top:16%;font-size: 14px;" class="LastUpd"></p>
+            <br><br>
+            
+           <table id="tbl" border="1" style="">            
+            <tr><td class="tblhead">Parameter</td><td class="tblhead">Value</td></th></tr>
+             <tr><td>Manual/Auto:</td><td id="tMAN_AUTO" class="spltd"></td></tr>
+             <tr><td>Compressor1 Status:</td><td id="tCOMP1_STS" class="spltd"></td></tr>
+             <tr><td>Compressor2 Status:</td><td id="tCOMP2_STS" class="spltd"></td></tr>
+             <tr><td>Agitator Status:</td><td id="tAGTR_STS" class="spltd"></td></tr>
+             <tr><td>DG Running Status:</td><td id="tDG_STS" class="spltd"></td></tr>
+             <tr><td>EB Supply Status:</td><td id="tEBSUP_STS" class="spltd"></td></tr>
+             <tr><td>Agitator Trip Status:</td><td id="tAGT_TRIP_STS" class="spltd"></td></tr>
+             <tr><td>Compressor 1 Trip Status:</td><td id="tCOMP1_TRIP_STS" class="spltd"></td></tr>
+             <tr><td>Compressor 2 Trip Status:</td><td id="tCOMP2_TRIP_STS" class="spltd"></td></tr>
+             <tr><td>Pump Trip Status:</td><td id="tPUMP_TRIP_STS" class="spltd"></td></tr>
+            </table>        
+            
+            <div class="menu">
+                <ul>
+                    <a href="#home" style="color:#999"><li><i class="fa fa-home"></i></li></a>
+                    <a href="#" style="color:#fff"><li  style="background:#3961a3"><i class="fa fa-th"></i></li></a>
+                    <a href="#activity" style="color:#999"><li><i class="fa fa-bar-chart"></i></li></a>
+                    <a href="#bell" style="color:#999"><li><i class="fa fa fa-bell-o"></i></li></a>
+                </ul>
+             </div>
+        </div>
+
+
+
+        <div data-role="page" id="activity">
+            <div class="head" style="text-align:left;padding-top:6px;">
+            <span style="color:#fff;font-size:24px;margin-left:20px;">Chart</span>
+            <a href="#" onclick="exitApp();" style="color:#fff">
+            <i class="fa fa-power-off" style="position:absolute;color:#fff;font-size:24px;right:20px;padding-top:6px;" aria-hidden="true"></i>
+            </a></div>
+            <img src="images/bmc.jpg" class="backimg">
+            <div class="screen"></div>
+             <p style="position:absolute;color:#000;margin-left:5%;margin-top:16%;font-size: 14px;" class="LastUpd"></p>
+             
+             <div id="barchart" style="position:absolute;color:#999; margin-top:35%;margin-left:2%;width:97%;padding:0px;border: solid;">
+             </div>
+            <div class="menu">
+                <ul>
+                    <a href="#home" style="color:#999"><li><i class="fa fa-home"></i></li></a>
+                    <a href="#mag" style="color:#999"><li><i class="fa fa-th"></i></li></a>
+                    <a href="#" style="color:#fff"><li style="background:#3961a3"><i class="fa fa-bar-chart"></i></li></a>
+                    <a href="#bell" style="color:#999"><li><i class="fa fa fa-bell-o"></i></li></a>
+                </ul>
+            </div>
+        </div>
+        <div data-role="page" id="bell">
+                        <div class="head" style="text-align:left;padding-top:6px;">
+            <span style="color:#fff;font-size:24px;margin-left:20px;">Notifications</span>
+            <a href="#" onclick="exitApp();" style="color:#fff">
+            <i class="fa fa-power-off" style="position:absolute;color:#fff;font-size:24px;right:20px;padding-top:6px;" aria-hidden="true"></i>
+            </a></div>
+
+            <img src="images/bmc.jpg" class="backimg">
+            <div class="screen"></div>
+            <p style="position:absolute;color:#000;margin-left:5%;margin-top:16%;font-size: 14px;" class="LastUpd"></p>
+             
+             <div  style="position:absolute;color:#000; margin-top:25%;margin-left:2%;width:90%;padding:0px;">
+
+                <table id="OpenAlarmsTab" border="1">
+					  <thead>
+					    <tr>
+					      <th class="tblhead" style="font-size: 15px">Date</th>                         
+					      <th class="tblhead" style="font-size: 15px">Name</th>
+					      <th class="tblhead" style="font-size: 15px">Dur.</th>
+					    </tr>
+					  </thead>
+					  <tbody id="OpenAlarmsTabBody"></tbody>
+				</table>            
+            
+            </div>
+            <div class="menu">
+                <ul>
+                    <a href="#home" style="color:#999"><li><i class="fa fa-home"></i></li></a>
+                    <a href="#mag" style="color:#999"><li><i class="fa fa-th"></i></li></a>
+                    <a href="#activity" style="color:#999"><li><i class="fa fa-bar-chart"></i></li></a>
+                    <a href="#" style="color:#fff"><li style="background:#3961a3"><i class="fa fa fa-bell-o"></i></li></a>
+                </ul>
+            </div>
+        </div>
+    </body>
+     <script type="text/javascript" src="cordova.js"></script>
+</html>
